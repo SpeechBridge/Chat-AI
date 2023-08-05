@@ -156,6 +156,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 child: Text(
                   isLastPage ? "Регистрация и вход" : "Заценим!",
                   style: TextStyle(
+                    fontWeight: FontWeight.w700,
                     fontSize: 22.sp,
                   ),
                 ),

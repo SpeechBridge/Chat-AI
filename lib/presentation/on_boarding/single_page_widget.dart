@@ -36,7 +36,7 @@ class SinglePage extends StatelessWidget {
         Text(
           item.subline,
           style: TextStyle(
-            fontSize: 21.sp, fontWeight: FontWeight.w700,
+            fontSize: 21.sp,
             // height: 1.5,
             // letterSpacing: 0.8,
           ),
