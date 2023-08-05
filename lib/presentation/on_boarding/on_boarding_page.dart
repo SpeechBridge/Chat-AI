@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:ai_chat_flutter/presentation/on_boarding/on_board_colors.dart';
 import 'package:ai_chat_flutter/presentation/on_boarding/single_page_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -17,24 +17,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   List<OnboardingItem> onboardingItems = [
     OnboardingItem(
-      headline: "Отличный сервис каршеринга",
+      headline: "Просто взмахни",
+      subline: "Попробуйте новый сервис\nдля распознавания жестов",
       image: "assets/images/onboarding1.png",
-      color: AppColors.colorful01,
     ),
     OnboardingItem(
-      headline: "Общественный транспорт тратит много времени впустую?",
+      headline: "Общайтесь",
+      subline: "Попробуйте новый сервис\nдля распознавания жестов",
       image: "assets/images/onboarding2.png",
-      color: AppColors.colorful02,
     ),
     OnboardingItem(
-      headline: "Нужна машина для потрясающих выходных?",
+      headline: "Учись",
+      subline: "Попробуйте новый сервис\nдля распознавания жестов",
       image: "assets/images/onboarding3.png",
-      color: AppColors.colorful03,
-    ),
-    OnboardingItem(
-      headline: "Получите понравившуюся Вам машину",
-      image: "assets/images/onboarding4.png",
-      color: AppColors.colorful04,
     ),
   ];
 
@@ -59,128 +54,133 @@ class _OnboardingPageState extends State<OnboardingPage> {
     bool isLastPage = activePage == onboardingItems.length - 1;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      color: onboardingItems[activePage].color,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Column(
-            children: [
-              Expanded(
-                child: PageView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  onPageChanged: (value) {
-                    setState(() {
-                      activePage = value;
-                    });
-                  },
-                  controller: _pageController,
-                  itemCount: onboardingItems.length,
-                  itemBuilder: (context, index) {
-                    final item = onboardingItems[index];
-                    if (index == currentPageValue.floor()) {
-                      return Transform(
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(currentPageValue - index)
-                          ..scale(1 - (currentPageValue - index).abs()),
-                        alignment: Alignment.centerLeft,
-                        child: SinglePage(
-                          item: item,
-                        ),
-                      );
-                    } else if (index == currentPageValue.floor() + 1) {
-                      return Transform(
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(currentPageValue - index)
-                          ..scale(1 - (currentPageValue - index).abs()),
-                        alignment: Alignment.centerRight,
-                        child: SinglePage(
-                          item: item,
-                        ),
-                      );
-                    } else {
-                      return Transform(
-                        transform: Matrix4.identity()
-                          ..setEntry(3, 2, 0.001)
-                          ..rotateY(currentPageValue - index)
-                          ..scale(1 - (currentPageValue - index).abs()),
-                        alignment: Alignment.center,
-                        child: SinglePage(
-                          item: item,
-                        ),
-                      );
-                    }
-                  },
-                ),
-              ),
-              const SizedBox(height: 14),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: List.generate(
-                  onboardingItems.length,
-                  (index) {
-                    return AnimatedContainer(
-                      height: 3,
-                      margin: const EdgeInsets.only(right: 5.0),
-                      width: activePage == index ? 30 : 15,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color:
-                            activePage == index ? AppColors.white : Colors.grey,
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: 125.h,
+          bottom: 63.h,
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                physics: const BouncingScrollPhysics(),
+                onPageChanged: (value) {
+                  setState(() {
+                    activePage = value;
+                  });
+                },
+                controller: _pageController,
+                itemCount: onboardingItems.length,
+                itemBuilder: (context, index) {
+                  final item = onboardingItems[index];
+                  if (index == currentPageValue.floor()) {
+                    return Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateY(currentPageValue - index)
+                        ..scale(1 - (currentPageValue - index).abs()),
+                      alignment: Alignment.centerLeft,
+                      child: SinglePage(
+                        item: item,
                       ),
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
                     );
-                  },
-                ),
-              ),
-              const SizedBox(height: 14),
-              TextButton(
-                onPressed: () {
-                  if (!isLastPage) {
-                    _pageController.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
+                  } else if (index == currentPageValue.floor() + 1) {
+                    return Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateY(currentPageValue - index)
+                        ..scale(1 - (currentPageValue - index).abs()),
+                      alignment: Alignment.centerRight,
+                      child: SinglePage(
+                        item: item,
+                      ),
                     );
                   } else {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        //тут должен быть переход на страницу регистрации
-                        builder: (context) => Container(),
+                    return Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, 0.001)
+                        ..rotateY(currentPageValue - index)
+                        ..scale(1 - (currentPageValue - index).abs()),
+                      alignment: Alignment.center,
+                      child: SinglePage(
+                        item: item,
                       ),
                     );
                   }
                 },
-                child: Center(
-                  child: Container(
-                    width: 352.0,
-                    height: 55.0,
-                    padding: const EdgeInsets.only(
-                        top: 16.0, right: 26.0, bottom: 16.0, left: 26.0),
+              ),
+            ),
+            SizedBox(height: 39.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: List.generate(
+                onboardingItems.length,
+                (index) {
+                  return AnimatedContainer(
+                    height: 3,
+                    margin: const EdgeInsets.only(right: 5.0),
+                    width: activePage == index ? 30 : 15,
                     decoration: BoxDecoration(
-                      color: AppColors.buttonColor1,
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(16.0)),
+                      borderRadius: BorderRadius.circular(4),
+                      color: activePage == index
+                          ? Theme.of(context).colorScheme.onSurfaceVariant
+                          : Theme.of(context).colorScheme.surfaceVariant,
                     ),
-                    child: Center(
-                      child: Text(
-                        isLastPage ? "Регистрация и вход" : "Далее",
-                        style: TextStyle(
-                          color: AppColors.white,
-                        ),
-                      ),
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 39.h),
+            FilledButton.tonal(
+              onPressed: () {
+                if (!isLastPage) {
+                  _pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                } else {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      //тут должен быть переход на страницу регистрации
+                      builder: (context) => Container(),
                     ),
+                  );
+                }
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 26.h, horizontal: 30.h),
+                child: Text(
+                  isLastPage ? "Регистрация и вход" : "Заценим!",
+                  style: TextStyle(
+                    fontSize: 22.sp,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
-          ),
+            ),
+            // TextButton(
+            //   child: Center(
+            //     child: Container(
+            //       width: 180.h,
+            //       height: 84.h,
+            //       // padding: const EdgeInsets.only(
+            //       //     top: 16.0, right: 26.0, bottom: 16.0, left: 26.0),
+            //       decoration: BoxDecoration(
+            //         // color: AppColors.buttonColor1,
+            //         borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+            //       ),
+            //       child: Center(
+            //         child: Text(
+            //           isLastPage ? "Регистрация и вход" : "Заценим!",
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+          ],
         ),
       ),
     );
@@ -189,11 +189,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
 class OnboardingItem {
   final String headline;
+  final String subline;
   final String image;
-  final Color color;
   OnboardingItem({
     required this.headline,
+    required this.subline,
     required this.image,
-    required this.color,
   });
 }

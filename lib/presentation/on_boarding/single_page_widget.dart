@@ -1,5 +1,6 @@
 import 'package:ai_chat_flutter/presentation/on_boarding/on_boarding_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SinglePage extends StatelessWidget {
   const SinglePage({
@@ -12,25 +13,35 @@ class SinglePage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(
-          height: 20,
-        ),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 330, maxWidth: 330),
+          constraints: BoxConstraints(maxHeight: 276.h, maxWidth: 276.h),
           child: Image.asset(item.image),
         ),
-        const Spacer(),
+        SizedBox(
+          height: 54.h,
+        ),
         Text(
           item.headline,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 42,
-            height: 0.8,
-            letterSpacing: 0.8,
+          style: TextStyle(
+            fontSize: 32.sp,
+            fontWeight: FontWeight.w800,
+            // height: 0.8,
+            // letterSpacing: 0.8,
           ),
           textAlign: TextAlign.center,
         ),
-        const Spacer(),
+        SizedBox(
+          height: 14.h,
+        ),
+        Text(
+          item.subline,
+          style: TextStyle(
+            fontSize: 21.sp, fontWeight: FontWeight.w700,
+            // height: 1.5,
+            // letterSpacing: 0.8,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }

@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:ai_chat_flutter/presentation/on_boarding/on_boarding_page.dart';
 import 'package:ai_chat_flutter/presentation/test_square.dart';
 import 'package:ai_chat_flutter/presentation/theme/cubit/theme_cubit.dart';
 import 'package:ai_chat_flutter/presentation/theme/theme_type.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         builder: (context, themeState) {
           return ScreenUtilInit(
             //Set the fit size (Find your UI design, look at the dimensions of the device screen and fill it in,unit in dp)
-            designSize: const Size(360, 690),
+            designSize: const Size(360, 800),
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (BuildContext context, Widget? child) {
@@ -62,14 +63,16 @@ class MyApp extends StatelessWidget {
                         brightness: Brightness.dark,
                       );
                     }
-                    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-                      statusBarColor: Colors.transparent,
-                      statusBarIconBrightness: Brightness.light ==
-                              SchedulerBinding.instance.platformDispatcher
-                                  .platformBrightness
-                          ? Brightness.dark
-                          : Brightness.light,
-                    ));
+                    SystemChrome.setSystemUIOverlayStyle(
+                      SystemUiOverlayStyle(
+                        statusBarColor: Colors.transparent,
+                        statusBarIconBrightness: Brightness.light ==
+                                SchedulerBinding.instance.platformDispatcher
+                                    .platformBrightness
+                            ? Brightness.dark
+                            : Brightness.light,
+                      ),
+                    );
                     return MaterialApp(
                       //TODO: change title
                       title: 'chat ai',
@@ -99,7 +102,9 @@ class MyApp extends StatelessWidget {
                 );
               }
             },
-            child: const Home(),
+            child: const Scaffold(
+              body: OnboardingPage(),
+            ),
           );
         },
       ),
@@ -107,81 +112,81 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+// class Home extends StatefulWidget {
+//   const Home({Key? key}) : super(key: key);
 
-  @override
-  _HomeState createState() => _HomeState();
-}
+//   @override
+//   _HomeState createState() => _HomeState();
+// }
 
-class _HomeState extends State<Home> {
-  final _textEditingController = TextEditingController();
+// class _HomeState extends State<Home> {
+//   final _textEditingController = TextEditingController();
 
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
+//   @override
+//   void dispose() {
+//     _textEditingController.dispose();
+//     super.dispose();
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    String dynamicMsg =
-        _isDemoUsingDynamicColors ? ' (dynamic)' : ' (not dynamic)';
+//   @override
+//   Widget build(BuildContext context) {
+//     String dynamicMsg =
+//         _isDemoUsingDynamicColors ? ' (dynamic)' : ' (not dynamic)';
 
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(35),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(children: [
-                TextButton(
-                  onPressed: () {
-                    context.read<ThemeCubit>().changeToLightTheme();
-                  },
-                  child: const Text('Light'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    context.read<ThemeCubit>().changeToDarkTheme();
-                  },
-                  child: const Text('Dark'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    context.read<ThemeCubit>().changeToCustomTheme();
-                  },
-                  child: const Text('Custom'),
-                ),
-                Text(
-                  context.read<ThemeCubit>().state.type.toString(),
-                ),
-              ]),
-              SizedBox(height: 20.h),
-              ColoredSquare(
-                Theme.of(context).colorScheme.primary,
-                'ColorScheme.primary$dynamicMsg',
-              ),
-              ColoredSquare(
-                Theme.of(context).colorScheme.secondary,
-                'ColorScheme.secondary',
-              ),
-              ColoredSquare(
-                Theme.of(context).colorScheme.tertiary,
-                'ColorScheme.tertiary',
-              ),
-              TextField(
-                controller: _textEditingController,
-                decoration: InputDecoration(
-                  errorText: 'This color is ColorScheme.error$dynamicMsg',
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      resizeToAvoidBottomInset: false,
-    );
-  }
-}
+//     return Scaffold(
+//       body: Container(
+//         padding: const EdgeInsets.all(35),
+//         child: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Row(children: [
+//                 TextButton(
+//                   onPressed: () {
+//                     context.read<ThemeCubit>().changeToLightTheme();
+//                   },
+//                   child: const Text('Light'),
+//                 ),
+//                 TextButton(
+//                   onPressed: () {
+//                     context.read<ThemeCubit>().changeToDarkTheme();
+//                   },
+//                   child: const Text('Dark'),
+//                 ),
+//                 TextButton(
+//                   onPressed: () {
+//                     context.read<ThemeCubit>().changeToCustomTheme();
+//                   },
+//                   child: const Text('Custom'),
+//                 ),
+//                 Text(
+//                   context.read<ThemeCubit>().state.type.toString(),
+//                 ),
+//               ]),
+//               SizedBox(height: 20.h),
+//               ColoredSquare(
+//                 Theme.of(context).colorScheme.primary,
+//                 'ColorScheme.primary$dynamicMsg',
+//               ),
+//               ColoredSquare(
+//                 Theme.of(context).colorScheme.secondary,
+//                 'ColorScheme.secondary',
+//               ),
+//               ColoredSquare(
+//                 Theme.of(context).colorScheme.tertiary,
+//                 'ColorScheme.tertiary',
+//               ),
+//               TextField(
+//                 controller: _textEditingController,
+//                 decoration: InputDecoration(
+//                   errorText: 'This color is ColorScheme.error$dynamicMsg',
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//       resizeToAvoidBottomInset: false,
+//     );
+//   }
+// }
