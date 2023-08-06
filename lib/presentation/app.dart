@@ -62,8 +62,10 @@ class MyApp extends StatelessWidget {
                     SystemUiOverlayStyle(
                       statusBarColor: Colors.transparent,
                       statusBarIconBrightness: Brightness.light ==
-                              SchedulerBinding.instance.platformDispatcher
-                                  .platformBrightness
+                                  SchedulerBinding.instance.platformDispatcher
+                                      .platformBrightness &&
+                              (themeState.type == ThemeType.light ||
+                                  themeState.type == ThemeType.custom)
                           ? Brightness.dark
                           : Brightness.light,
                     ),
