@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ThemeCubit>(
-      create: (context) => ThemeCubit(),
+      create: (context) => changeThemeCubit,
       child: BlocBuilder<ThemeCubit, ChangeThemeState>(
         builder: (context, themeState) {
           return ScreenUtilInit(
