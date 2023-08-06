@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:ai_chat_flutter/presentation/on_boarding/single_page_widget.dart';
+import 'package:ai_chat_flutter/presentation/search_sign/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -56,8 +57,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
       duration: const Duration(milliseconds: 300),
       child: Padding(
         padding: EdgeInsets.only(
-          top: 125.h,
-          bottom: 63.h,
+          top: 123.h,
+          bottom: 45.h,
         ),
         child: Column(
           children: [
@@ -146,7 +147,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     context,
                     MaterialPageRoute(
                       //тут должен быть переход на страницу регистрации
-                      builder: (context) => Container(),
+                      builder: (BuildContext context) =>
+                          const BottomNavigationWidget(),
                     ),
                   );
                 }
@@ -162,25 +164,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 ),
               ),
             ),
-            // TextButton(
-            //   child: Center(
-            //     child: Container(
-            //       width: 180.h,
-            //       height: 84.h,
-            //       // padding: const EdgeInsets.only(
-            //       //     top: 16.0, right: 26.0, bottom: 16.0, left: 26.0),
-            //       decoration: BoxDecoration(
-            //         // color: AppColors.buttonColor1,
-            //         borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            //       ),
-            //       child: Center(
-            //         child: Text(
-            //           isLastPage ? "Регистрация и вход" : "Заценим!",
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

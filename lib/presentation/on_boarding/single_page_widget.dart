@@ -31,12 +31,13 @@ class SinglePage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         SizedBox(
-          height: 14.h,
+          height: 12.h,
         ),
         Text(
           item.subline,
           style: TextStyle(
             fontSize: 21.sp,
+            fontWeight: FontWeight.w400,
             // height: 1.5,
             // letterSpacing: 0.8,
           ),
