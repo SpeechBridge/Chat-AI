@@ -78,14 +78,12 @@ class MyApp extends StatelessWidget {
                         ? ThemeData(
                             colorScheme: lightColorScheme,
                             useMaterial3: true,
-                            // extensions: [lightCustomColors],
                           )
                         : themeState.themeData,
                     darkTheme: themeState.type == ThemeType.custom
                         ? ThemeData(
                             colorScheme: darkColorScheme,
-                            //useMaterial3: true,
-                            // extensions: [darkCustomColors],
+                            useMaterial3: true,
                           )
                         : themeState.themeData,
                     home: child,
