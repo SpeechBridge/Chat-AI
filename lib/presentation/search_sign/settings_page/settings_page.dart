@@ -13,7 +13,7 @@ class SettingsWidget extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 48.h,
+              height: 65.h,
             ),
             const SettingsImageWidget(),
             SizedBox(
