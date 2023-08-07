@@ -4,12 +4,8 @@ import 'package:ai_chat_flutter/presentation/theme/theme_type.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-bool _isDemoUsingDynamicColors = false;
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -47,7 +43,6 @@ class MyApp extends StatelessWidget {
                     // darkColorScheme = darkColorScheme.copyWith(
                     //   secondary: const Color.fromARGB(255, 186, 204, 179),
                     // );
-                    _isDemoUsingDynamicColors = true;
                   } else {
                     // Otherwise, use fallback schemes.
                     lightColorScheme = ColorScheme.fromSeed(
@@ -58,18 +53,7 @@ class MyApp extends StatelessWidget {
                       brightness: Brightness.dark,
                     );
                   }
-                  SystemChrome.setSystemUIOverlayStyle(
-                    SystemUiOverlayStyle(
-                      statusBarColor: Colors.transparent,
-                      statusBarIconBrightness: Brightness.light ==
-                                  SchedulerBinding.instance.platformDispatcher
-                                      .platformBrightness &&
-                              (themeState.type == ThemeType.light ||
-                                  themeState.type == ThemeType.custom)
-                          ? Brightness.dark
-                          : Brightness.light,
-                    ),
-                  );
+
                   return MaterialApp(
                     //TODO: change title
                     title: 'chat ai',
