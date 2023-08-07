@@ -1,0 +1,16 @@
+{
+    "category": "Транспорт",
+    "signs": [
+        {
+            "text": "маяк",
+            "link": "https://rasa-test.surdo24.ru/dict/avatar-backend-media/dataV3/2013.mp4",
+            "categories": [
+                {
+                    "id": 2490,
+                    "name": "Транспорт"
+                }
+            ]
+        }
+    ]
+}
+

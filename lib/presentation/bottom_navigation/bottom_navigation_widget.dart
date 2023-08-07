@@ -21,14 +21,15 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             'In progress...',
           ),
         ),
-        SearchSignView(),
+        SearchSignPage(),
         SettingsWidget(),
       ][selectedPageIndex],
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 80.h,
         child: NavigationBar(
           selectedIndex: selectedPageIndex,
           onDestinationSelected: (int index) {
+            //TODO: to bloc
             setState(() {
               selectedPageIndex = index;
             });

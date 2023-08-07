@@ -8,12 +8,12 @@ part 'search_sign_state.dart';
 part 'search_sign_bloc.freezed.dart';
 
 class SearchSignBloc extends Bloc<SearchSignEvent, SearchSignState> {
-  SearchSignBloc(this._signService) : super(const SearchSignState()) {
+  SearchSignBloc() : super(const SearchSignState()) {
     on<_Search>(_onSearch);
     // on<_Refreshed>(_onRefreshed);
   }
 
-  final SignService _signService;
+  final SignService _signService = SignService();
 
   Future<void> _onSearch(_Search event, Emitter<SearchSignState> emit) async {
     //TODO: возможно придется initial эмитить

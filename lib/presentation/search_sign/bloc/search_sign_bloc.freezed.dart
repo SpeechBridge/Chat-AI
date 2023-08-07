@@ -339,8 +339,6 @@ abstract class $SearchSignStateCopyWith<$Res> {
       _$SearchSignStateCopyWithImpl<$Res, SearchSignState>;
   @useResult
   $Res call({SearchSignStatus status, String? word, SignDataModel? data});
-
-  $SignDataModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -375,18 +373,6 @@ class _$SearchSignStateCopyWithImpl<$Res, $Val extends SearchSignState>
               as SignDataModel?,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SignDataModelCopyWith<$Res>? get data {
-    if (_value.data == null) {
-      return null;
-    }
-
-    return $SignDataModelCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -398,9 +384,6 @@ abstract class _$$_SearchSignStateCopyWith<$Res>
   @override
   @useResult
   $Res call({SearchSignStatus status, String? word, SignDataModel? data});
-
-  @override
-  $SignDataModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
