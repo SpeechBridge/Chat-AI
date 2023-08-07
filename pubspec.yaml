@@ -21,6 +21,7 @@ dependencies:
   equatable: ^2.0.5
   json_to_model: ^3.2.4
   quiver: ^3.2.1
+  video_player: ^2.7.0
 
 dev_dependencies:
   flutter_test:

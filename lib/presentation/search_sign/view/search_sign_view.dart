@@ -1,4 +1,5 @@
 import 'package:ai_chat_flutter/presentation/search_sign/bloc/search_sign_bloc.dart';
+import 'package:ai_chat_flutter/presentation/search_sign/widgets/sign_learn_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -75,7 +76,16 @@ class SearchSignViewState extends State<SearchSignView> {
                                       final sign = signData?.signs[index];
                                       return ElevatedButton(
                                         onPressed: () {
-                                          // Handle button press
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SignDetailPage(
+                                                text: sign!.text,
+                                                link: sign.link,
+                                              ),
+                                            ),
+                                          );
                                         },
                                         child: Text(sign?.text ?? ''),
                                       );
