@@ -18,38 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchSignEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? word) started,
+    required TResult Function(String? word) search,
     required TResult Function() refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? word)? started,
+    TResult? Function(String? word)? search,
     TResult? Function()? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? word)? started,
+    TResult Function(String? word)? search,
     TResult Function()? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
     required TResult Function(_Refreshed value) refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
     TResult? Function(_Refreshed value)? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
     TResult Function(_Refreshed value)? refreshed,
     required TResult orElse(),
   }) =>
@@ -75,19 +75,18 @@ class _$SearchSignEventCopyWithImpl<$Res, $Val extends SearchSignEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$_SearchCopyWith<$Res> {
+  factory _$$_SearchCopyWith(_$_Search value, $Res Function(_$_Search) then) =
+      __$$_SearchCopyWithImpl<$Res>;
   @useResult
   $Res call({String? word});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$SearchSignEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$_SearchCopyWithImpl<$Res>
+    extends _$SearchSignEventCopyWithImpl<$Res, _$_Search>
+    implements _$$_SearchCopyWith<$Res> {
+  __$$_SearchCopyWithImpl(_$_Search _value, $Res Function(_$_Search) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +94,7 @@ class __$$_StartedCopyWithImpl<$Res>
   $Res call({
     Object? word = freezed,
   }) {
-    return _then(_$_Started(
+    return _then(_$_Search(
       freezed == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -106,22 +105,22 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started with DiagnosticableTreeMixin implements _Started {
-  const _$_Started(this.word);
+class _$_Search with DiagnosticableTreeMixin implements _Search {
+  const _$_Search(this.word);
 
   @override
   final String? word;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SearchSignEvent.started(word: $word)';
+    return 'SearchSignEvent.search(word: $word)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'SearchSignEvent.started'))
+      ..add(DiagnosticsProperty('type', 'SearchSignEvent.search'))
       ..add(DiagnosticsProperty('word', word));
   }
 
@@ -129,7 +128,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$_Search &&
             (identical(other.word, word) || other.word == word));
   }
 
@@ -139,36 +138,36 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$_SearchCopyWith<_$_Search> get copyWith =>
+      __$$_SearchCopyWithImpl<_$_Search>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? word) started,
+    required TResult Function(String? word) search,
     required TResult Function() refreshed,
   }) {
-    return started(word);
+    return search(word);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? word)? started,
+    TResult? Function(String? word)? search,
     TResult? Function()? refreshed,
   }) {
-    return started?.call(word);
+    return search?.call(word);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? word)? started,
+    TResult Function(String? word)? search,
     TResult Function()? refreshed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(word);
+    if (search != null) {
+      return search(word);
     }
     return orElse();
   }
@@ -176,41 +175,41 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
     required TResult Function(_Refreshed value) refreshed,
   }) {
-    return started(this);
+    return search(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
     TResult? Function(_Refreshed value)? refreshed,
   }) {
-    return started?.call(this);
+    return search?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
     TResult Function(_Refreshed value)? refreshed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (search != null) {
+      return search(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements SearchSignEvent {
-  const factory _Started(final String? word) = _$_Started;
+abstract class _Search implements SearchSignEvent {
+  const factory _Search(final String? word) = _$_Search;
 
   String? get word;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$_SearchCopyWith<_$_Search> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -258,7 +257,7 @@ class _$_Refreshed with DiagnosticableTreeMixin implements _Refreshed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? word) started,
+    required TResult Function(String? word) search,
     required TResult Function() refreshed,
   }) {
     return refreshed();
@@ -267,7 +266,7 @@ class _$_Refreshed with DiagnosticableTreeMixin implements _Refreshed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? word)? started,
+    TResult? Function(String? word)? search,
     TResult? Function()? refreshed,
   }) {
     return refreshed?.call();
@@ -276,7 +275,7 @@ class _$_Refreshed with DiagnosticableTreeMixin implements _Refreshed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? word)? started,
+    TResult Function(String? word)? search,
     TResult Function()? refreshed,
     required TResult orElse(),
   }) {
@@ -289,7 +288,7 @@ class _$_Refreshed with DiagnosticableTreeMixin implements _Refreshed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Search value) search,
     required TResult Function(_Refreshed value) refreshed,
   }) {
     return refreshed(this);
@@ -298,7 +297,7 @@ class _$_Refreshed with DiagnosticableTreeMixin implements _Refreshed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Search value)? search,
     TResult? Function(_Refreshed value)? refreshed,
   }) {
     return refreshed?.call(this);
@@ -307,7 +306,7 @@ class _$_Refreshed with DiagnosticableTreeMixin implements _Refreshed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Search value)? search,
     TResult Function(_Refreshed value)? refreshed,
     required TResult orElse(),
   }) {

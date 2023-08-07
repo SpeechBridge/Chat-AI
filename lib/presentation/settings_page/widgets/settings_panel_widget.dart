@@ -1,4 +1,4 @@
-import 'package:ai_chat_flutter/presentation/search_sign/settings_page/widgets/theme_modal_bottom_sheet.dart';
+import 'package:ai_chat_flutter/presentation/settings_page/widgets/theme_modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

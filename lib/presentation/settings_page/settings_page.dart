@@ -1,5 +1,5 @@
-import 'package:ai_chat_flutter/presentation/search_sign/settings_page/widgets/settings_image_widget.dart';
-import 'package:ai_chat_flutter/presentation/search_sign/settings_page/widgets/settings_panel_widget.dart';
+import 'package:ai_chat_flutter/presentation/settings_page/widgets/settings_image_widget.dart';
+import 'package:ai_chat_flutter/presentation/settings_page/widgets/settings_panel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,4 +1,5 @@
-import 'package:ai_chat_flutter/presentation/search_sign/settings_page/settings_page.dart';
+import 'package:ai_chat_flutter/presentation/search_sign/search_sign_page.dart';
+import 'package:ai_chat_flutter/presentation/settings_page/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,11 +21,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             'In progress...',
           ),
         ),
-        Center(
-          child: Text(
-            'In progress...',
-          ),
-        ),
+        SearchSignView(),
         SettingsWidget(),
       ][selectedPageIndex],
       bottomNavigationBar: Container(

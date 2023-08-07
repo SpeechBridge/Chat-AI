@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:ai_chat_flutter/presentation/on_boarding/single_page_widget.dart';
-import 'package:ai_chat_flutter/presentation/search_sign/bottom_navigation/bottom_navigation_widget.dart';
+import 'package:ai_chat_flutter/presentation/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
