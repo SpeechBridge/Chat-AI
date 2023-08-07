@@ -16,7 +16,6 @@ class SearchSignViewState extends State<SearchSignView> {
 
   @override
   Widget build(BuildContext context) {
-    ScrollController _scrollController = ScrollController();
     return KeyboardDismissOnTap(
       dismissOnCapturedTaps: true,
       child: KeyboardVisibilityBuilder(

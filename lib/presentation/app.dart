@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
                   return MaterialApp(
                     //TODO: change title
                     title: 'chat ai',
-                    //позорный костыль
                     theme: themeState.type == ThemeType.custom
                         ? ThemeData(
                             colorScheme: lightColorScheme,
