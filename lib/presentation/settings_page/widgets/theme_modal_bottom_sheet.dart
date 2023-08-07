@@ -53,7 +53,7 @@ void showThemeModalBottomSheet(BuildContext context) {
                 minimumSize: Size.fromHeight(50.h),
                 padding: EdgeInsets.only(left: 20.w),
               ),
-              child: const Text('Динамическая как в системе'),
+              child: const Text('Динамичная тема как в системе'),
               onPressed: () {
                 context.read<ThemeCubit>().changeToCustomTheme();
                 Navigator.pop(context);

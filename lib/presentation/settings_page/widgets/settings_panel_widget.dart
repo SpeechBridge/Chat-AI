@@ -1,5 +1,8 @@
 import 'package:ai_chat_flutter/presentation/settings_page/widgets/theme_modal_bottom_sheet.dart';
+import 'package:ai_chat_flutter/presentation/theme/cubit/theme_cubit.dart';
+import 'package:ai_chat_flutter/presentation/theme/theme_type.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsPanelWidget extends StatelessWidget {
@@ -11,7 +14,11 @@ class SettingsPanelWidget extends StatelessWidget {
       children: [
         SettingsBaseButton(
           headline: 'Оформление',
-          subline: 'Светлая тема',
+          subline: context.read<ThemeCubit>().state.type == ThemeType.custom
+              ? 'Динамичная тема'
+              : context.read<ThemeCubit>().state.type == ThemeType.light
+                  ? 'Светлая тема'
+                  : 'Темная тема',
           icon: Icons.wb_sunny_outlined,
           onPressed: () {
             showThemeModalBottomSheet(context);
