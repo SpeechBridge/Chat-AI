@@ -45,9 +45,14 @@ class _SignDetailPageState extends State<SignDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(widget.text),
+        // systemOverlayStyle: const SystemUiOverlayStyle(
+        //   statusBarColor: Colors.transparent,
+        // ),
+        centerTitle: true,
+        title: Text(
+          widget.text,
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),

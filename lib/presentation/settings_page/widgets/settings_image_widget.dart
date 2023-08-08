@@ -17,10 +17,10 @@ class SettingsImageWidget extends StatelessWidget {
         ),
         Text(
           'Жесты',
-          style: TextStyle(
-            fontWeight: FontWeight.w800,
-            fontSize: 32.sp,
-          ),
+          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                fontWeight: FontWeight.w800,
+                fontSize: 32.sp,
+              ),
         ),
       ],
     );

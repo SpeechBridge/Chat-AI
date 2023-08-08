@@ -16,16 +16,21 @@ class SearchSignBloc extends Bloc<SearchSignEvent, SearchSignState> {
   final SignService _signService = SignService();
 
   Future<void> _onSearch(_Search event, Emitter<SearchSignState> emit) async {
-    //TODO: возможно придется initial эмитить
     if (event.word == '' || event.word!.isEmpty) {
+      if (state.status == SearchSignStatus.success) {
+        emit(state.copyWith(status: SearchSignStatus.initial));
+      }
       return;
     }
     final word = event.word;
     emit(state.copyWith(status: SearchSignStatus.loading, word: word));
     try {
       final data = await _signService.searchSigns(event.word!);
-      emit(state.copyWith(
-          status: SearchSignStatus.success, data: data, word: word));
+      // Проверяем, соответствует ли текущее слово слову, по которому был выполнен поиск
+      if (state.word == word) {
+        emit(state.copyWith(
+            status: SearchSignStatus.success, data: data, word: word));
+      }
     } catch (_) {
       emit(state.copyWith(status: SearchSignStatus.failure));
     }

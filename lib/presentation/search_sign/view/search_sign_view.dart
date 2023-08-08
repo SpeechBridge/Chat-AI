@@ -33,12 +33,17 @@ class SearchSignViewState extends State<SearchSignView> {
                     padding: EdgeInsets.only(
                         top: 40.h, left: 30.h, right: 30.h, bottom: 10.h),
                     child: SearchBar(
-                      controller: _controller,
-                      hintText: 'Начните писать...',
-                      leading: IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed: () {},
+                      padding: MaterialStateProperty.all(
+                        EdgeInsets.symmetric(horizontal: 10.h),
                       ),
+                      controller: _controller,
+                      hintText: 'Например: "комета"',
+                      trailing: [
+                        IconButton(
+                          icon: const Icon(Icons.search),
+                          onPressed: () {},
+                        ),
+                      ],
                       onTap: () {},
                       onChanged: (value) {
                         context
