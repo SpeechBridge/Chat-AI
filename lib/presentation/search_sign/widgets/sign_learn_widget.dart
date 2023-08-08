@@ -54,7 +54,7 @@ class _SignDetailPageState extends State<SignDetailPage> {
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.chevron_left),
           onPressed: () => Navigator.pop(context),
         ),
       ),

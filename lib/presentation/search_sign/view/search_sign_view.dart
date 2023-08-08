@@ -1,5 +1,6 @@
 import 'package:ai_chat_flutter/presentation/search_sign/bloc/search_sign_bloc.dart';
 import 'package:ai_chat_flutter/presentation/search_sign/widgets/sign_learn_widget.dart';
+import 'package:ai_chat_flutter/presentation/search_sign/widgets/sign_not_found_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -54,56 +55,63 @@ class SearchSignViewState extends State<SearchSignView> {
                   ),
                   //над оптимизаией еще работать и работать
                   if (state.status == SearchSignStatus.success)
-                    Expanded(
-                      child: ListView.builder(
-                        //кэш для оптимизации
-                        cacheExtent: 15000.0,
-                        itemCount: state.data?.signDataList.length ?? 0,
-                        itemBuilder: (context, index) {
-                          final signData = state.data?.signDataList[index];
-                          return Padding(
-                            padding: EdgeInsets.only(left: 20.h, right: 20.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(signData?.category ?? '',
-                                    style: TextStyle(
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w500,
-                                    )),
-                                SizedBox(height: 4.h),
-                                Wrap(
-                                  spacing: 8.0, // gap between adjacent chips
-                                  runSpacing: 4.0, // gap between lines
-                                  children: List.generate(
-                                    signData?.signs.length ?? 0,
-                                    (index) {
-                                      final sign = signData?.signs[index];
-                                      return ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SignDetailPage(
-                                                text: sign!.text,
-                                                link: sign.link,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(sign?.text ?? ''),
-                                      );
-                                    },
+                    // ignore: prefer_is_empty
+                    state.data?.signDataList.length == 0
+                        ? const SignNotFoundWidget()
+                        : Expanded(
+                            child: ListView.builder(
+                              //кэш для оптимизации
+                              cacheExtent: 15000.0,
+                              itemCount: state.data?.signDataList.length ?? 0,
+                              itemBuilder: (context, index) {
+                                final signData =
+                                    state.data?.signDataList[index];
+                                return Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 20.h, right: 20.h),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(signData?.category ?? '',
+                                          style: TextStyle(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w500,
+                                          )),
+                                      SizedBox(height: 4.h),
+                                      Wrap(
+                                        spacing:
+                                            8.0, // gap between adjacent chips
+                                        runSpacing: 4.0, // gap between lines
+                                        children: List.generate(
+                                          signData?.signs.length ?? 0,
+                                          (index) {
+                                            final sign = signData?.signs[index];
+                                            return ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        SignDetailPage(
+                                                      text: sign!.text,
+                                                      link: sign.link,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Text(sign?.text ?? ''),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(height: 10.h),
+                                    ],
                                   ),
-                                ),
-                                SizedBox(height: 10.h),
-                              ],
+                                );
+                              },
                             ),
-                          );
-                        },
-                      ),
-                    ),
+                          ),
                   // Вы можете добавить дополнительные виджеты для других состояний
                 ],
               );
