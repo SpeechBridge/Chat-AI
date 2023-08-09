@@ -22,6 +22,7 @@ dependencies:
   json_to_model: ^3.2.4
   quiver: ^3.2.1
   video_player: ^2.7.0
+  camera: ^0.10.5+3
 
 dev_dependencies:
   flutter_test:

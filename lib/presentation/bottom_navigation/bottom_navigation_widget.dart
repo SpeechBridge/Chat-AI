@@ -3,6 +3,8 @@ import 'package:ai_chat_flutter/presentation/settings_page/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../camera_page/view/camera_view.dart';
+
 class BottomNavigationWidget extends StatefulWidget {
   const BottomNavigationWidget({super.key});
 
@@ -16,11 +18,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const [
-        Center(
-          child: Text(
-            'In progress...',
-          ),
-        ),
+        CameraApp(),
         SearchSignPage(),
         SettingsWidget(),
       ][selectedPageIndex],
