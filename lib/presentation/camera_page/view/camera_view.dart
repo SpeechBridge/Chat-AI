@@ -69,7 +69,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   @override
   void initState() {
     super.initState();
-
+    
     WidgetsBinding.instance.addObserver(this);
     onNewCameraSelected(cameras[0]);
     _flashModeControlRowAnimationController = AnimationController(
