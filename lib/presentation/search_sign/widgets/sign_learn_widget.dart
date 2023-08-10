@@ -9,10 +9,10 @@ class SignDetailPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _SignDetailPageState createState() => _SignDetailPageState();
+  SignDetailPageState createState() => SignDetailPageState();
 }
 
-class _SignDetailPageState extends State<SignDetailPage> {
+class SignDetailPageState extends State<SignDetailPage> {
   late VideoPlayerController _controller;
 
   @override
