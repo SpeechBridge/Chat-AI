@@ -145,7 +145,9 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
         child: Column(
           children: <Widget>[
             Expanded(
-              child: _cameraPreviewWidget(),
+              child: Center(
+                child: _cameraPreviewWidget(),
+              ),
             ),
             _modeControlRowWidget(),
           ],
@@ -154,23 +156,32 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     );
   }
 
-  /// Display the preview from the camera (or a message if the preview is not available).
   Widget _cameraPreviewWidget() {
+    if (controller == null || !controller!.value.isInitialized) {
+      return const Text('Камера не инициализирована');
+    }
+
+    final aspectRatio =
+        1 / controller!.value.aspectRatio; // Инвертируем соотношение сторон
+
     return Listener(
       onPointerDown: (_) => _pointers++,
       onPointerUp: (_) => _pointers--,
-      child: CameraPreview(
-        controller!,
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            return GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onScaleStart: _handleScaleStart,
-              onScaleUpdate: _handleScaleUpdate,
-              onTapDown: (TapDownDetails details) =>
-                  onViewFinderTap(details, constraints),
-            );
-          },
+      child: AspectRatio(
+        aspectRatio: aspectRatio,
+        child: CameraPreview(
+          controller!,
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onScaleStart: _handleScaleStart,
+                onScaleUpdate: _handleScaleUpdate,
+                onTapDown: (TapDownDetails details) =>
+                    onViewFinderTap(details, constraints),
+              );
+            },
+          ),
         ),
       ),
     );
@@ -234,6 +245,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
         _flashModeControlRowWidget(),
         _exposureModeControlRowWidget(),
         _focusModeControlRowWidget(),
+        //SizedBox(height: 10.h),
       ],
     );
   }
