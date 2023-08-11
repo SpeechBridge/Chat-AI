@@ -1,3 +1,5 @@
+import 'package:ai_chat_flutter/presentation/bottom_navigation/bottom_navigation_widget.dart';
+import 'package:ai_chat_flutter/presentation/on_boarding/cubit/on_boarding_cubit.dart';
 import 'package:ai_chat_flutter/presentation/on_boarding/on_boarding_page.dart';
 import 'package:ai_chat_flutter/presentation/theme/cubit/theme_cubit.dart';
 import 'package:ai_chat_flutter/presentation/theme/theme_type.dart';
@@ -12,8 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ThemeCubit>(
-      create: (context) => changeThemeCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeCubit>(
+          create: (context) => changeThemeCubit,
+        ),
+        BlocProvider<OnBoardingCubit>(
+          create: (context) => OnBoardingCubit()..checkOnBoardingCompletion(),
+        ),
+      ],
       child: BlocBuilder<ThemeCubit, ChangeThemeState>(
         builder: (context, themeState) {
           return ScreenUtilInit(
@@ -74,8 +83,10 @@ class MyApp extends StatelessWidget {
                 },
               );
             },
-            child: const Scaffold(
-              body: OnboardingPage(),
+            child: Scaffold(
+              body: context.read<OnBoardingCubit>().state.isComplete
+                  ? const BottomNavigationWidget()
+                  : const OnboardingPage(),
             ),
           );
         },

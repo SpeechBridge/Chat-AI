@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ai_chat_flutter/presentation/on_boarding/cubit/on_boarding_cubit.dart';
 import 'package:ai_chat_flutter/presentation/on_boarding/single_page_widget.dart';
 import 'package:ai_chat_flutter/presentation/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -143,6 +145,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     curve: Curves.easeInOut,
                   );
                 } else {
+                  context.read<OnBoardingCubit>().completeOnBoarding();
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
