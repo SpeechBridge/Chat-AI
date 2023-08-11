@@ -128,8 +128,19 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 36.0.h),
+        padding: EdgeInsets.only(top: 15.h),
+        child: CircleAvatar(
+          radius: 45.h / 2,
+          backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       body: SafeArea(
         child: Column(
           children: <Widget>[

@@ -1,4 +1,4 @@
-import 'package:ai_chat_flutter/presentation/camera_page/view/camera_view.dart';
+import 'package:ai_chat_flutter/presentation/home_page/home_page.dart';
 import 'package:ai_chat_flutter/presentation/search_sign/search_sign_page.dart';
 import 'package:ai_chat_flutter/presentation/settings_page/settings_page.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const [
-        CameraApp(),
+        HomePage(),
         SearchSignPage(),
         SettingsWidget(),
       ][selectedPageIndex],
