@@ -237,8 +237,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
             IconButton(
               icon: const Icon(Icons.flash_off),
               color: controller?.value.flashMode == FlashMode.off
-                  ? Colors.orange
-                  : Colors.blue,
+                  ? Theme.of(context).colorScheme.inversePrimary
+                  : Theme.of(context).colorScheme.onSurfaceVariant,
               onPressed: controller != null
                   ? () => onSetFlashModeButtonPressed(FlashMode.off)
                   : null,
@@ -246,8 +246,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
             IconButton(
               icon: const Icon(Icons.flash_auto),
               color: controller?.value.flashMode == FlashMode.auto
-                  ? Colors.orange
-                  : Colors.blue,
+                  ? Theme.of(context).colorScheme.inversePrimary
+                  : Theme.of(context).colorScheme.onSurfaceVariant,
               onPressed: controller != null
                   ? () => onSetFlashModeButtonPressed(FlashMode.auto)
                   : null,
@@ -255,8 +255,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
             IconButton(
               icon: const Icon(Icons.flash_on),
               color: controller?.value.flashMode == FlashMode.always
-                  ? Colors.orange
-                  : Colors.blue,
+                  ? Theme.of(context).colorScheme.inversePrimary
+                  : Theme.of(context).colorScheme.onSurfaceVariant,
               onPressed: controller != null
                   ? () => onSetFlashModeButtonPressed(FlashMode.always)
                   : null,
@@ -264,8 +264,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
             IconButton(
               icon: const Icon(Icons.highlight),
               color: controller?.value.flashMode == FlashMode.torch
-                  ? Colors.orange
-                  : Colors.blue,
+                  ? Theme.of(context).colorScheme.inversePrimary
+                  : Theme.of(context).colorScheme.onSurfaceVariant,
               onPressed: controller != null
                   ? () => onSetFlashModeButtonPressed(FlashMode.torch)
                   : null,
@@ -279,81 +279,77 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   Widget _exposureModeControlRowWidget() {
     final ButtonStyle styleAuto = TextButton.styleFrom(
       foregroundColor: controller?.value.exposureMode == ExposureMode.auto
-          ? Colors.orange
-          : Colors.blue,
+          ? Theme.of(context).colorScheme.inversePrimary
+          : Theme.of(context).colorScheme.onSurfaceVariant,
     );
     final ButtonStyle styleLocked = TextButton.styleFrom(
       foregroundColor: controller?.value.exposureMode == ExposureMode.locked
-          ? Colors.orange
-          : Colors.blue,
+          ? Theme.of(context).colorScheme.inversePrimary
+          : Theme.of(context).colorScheme.onSurfaceVariant,
     );
 
     return SizeTransition(
       sizeFactor: _exposureModeControlRowAnimation,
       child: ClipRect(
-        child: Container(
-          color: Colors.grey.shade50,
-          child: Column(
-            children: <Widget>[
-              const Center(
-                child: Text('Exposure Mode'),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  TextButton(
-                    style: styleAuto,
-                    onPressed: controller != null
-                        ? () =>
-                            onSetExposureModeButtonPressed(ExposureMode.auto)
-                        : null,
-                    onLongPress: () {
-                      if (controller != null) {
-                        controller!.setExposurePoint(null);
-                        showInSnackBar('Resetting exposure point');
-                      }
-                    },
-                    child: const Text('AUTO'),
-                  ),
-                  TextButton(
-                    style: styleLocked,
-                    onPressed: controller != null
-                        ? () =>
-                            onSetExposureModeButtonPressed(ExposureMode.locked)
-                        : null,
-                    child: const Text('LOCKED'),
-                  ),
-                  TextButton(
-                    style: styleLocked,
-                    onPressed: controller != null
-                        ? () => controller!.setExposureOffset(0.0)
-                        : null,
-                    child: const Text('RESET OFFSET'),
-                  ),
-                ],
-              ),
-              const Center(
-                child: Text('Exposure Offset'),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(_minAvailableExposureOffset.toString()),
-                  Slider(
-                    value: _currentExposureOffset,
-                    min: _minAvailableExposureOffset,
-                    max: _maxAvailableExposureOffset,
-                    label: _currentExposureOffset.toString(),
-                    onChanged: _minAvailableExposureOffset ==
-                            _maxAvailableExposureOffset
-                        ? null
-                        : setExposureOffset,
-                  ),
-                  Text(_maxAvailableExposureOffset.toString()),
-                ],
-              ),
-            ],
-          ),
+        child: Column(
+          children: <Widget>[
+            const Center(
+              child: Text('Режим экспозиции'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                TextButton(
+                  style: styleAuto,
+                  onPressed: controller != null
+                      ? () => onSetExposureModeButtonPressed(ExposureMode.auto)
+                      : null,
+                  onLongPress: () {
+                    if (controller != null) {
+                      controller!.setExposurePoint(null);
+                      showInSnackBar('Сброс точки экспозиции');
+                    }
+                  },
+                  child: const Text('АВТО'),
+                ),
+                TextButton(
+                  style: styleLocked,
+                  onPressed: controller != null
+                      ? () =>
+                          onSetExposureModeButtonPressed(ExposureMode.locked)
+                      : null,
+                  child: const Text('ЗАБЛОКИРОВАНО'),
+                ),
+                TextButton(
+                  style: styleLocked,
+                  onPressed: controller != null
+                      ? () => controller!.setExposureOffset(0.0)
+                      : null,
+                  child: const Text('СБРОСИТЬ СМЕЩЕНИЕ'),
+                ),
+              ],
+            ),
+            const Center(
+              child: Text('СМЕЩЕНИЕ ЭКСПОЗИЦИИ'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(_minAvailableExposureOffset.toString()),
+                Slider(
+                  value: _currentExposureOffset,
+                  min: _minAvailableExposureOffset,
+                  max: _maxAvailableExposureOffset,
+                  label: _currentExposureOffset.toString(),
+                  onChanged:
+                      _minAvailableExposureOffset == _maxAvailableExposureOffset
+                          ? null
+                          : setExposureOffset,
+                ),
+                Text(_maxAvailableExposureOffset.toString()),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -362,52 +358,49 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   Widget _focusModeControlRowWidget() {
     final ButtonStyle styleAuto = TextButton.styleFrom(
       foregroundColor: controller?.value.focusMode == FocusMode.auto
-          ? Colors.orange
-          : Colors.blue,
+          ? Theme.of(context).colorScheme.inversePrimary
+          : Theme.of(context).colorScheme.onSurfaceVariant,
     );
     final ButtonStyle styleLocked = TextButton.styleFrom(
       foregroundColor: controller?.value.focusMode == FocusMode.locked
-          ? Colors.orange
-          : Colors.blue,
+          ? Theme.of(context).colorScheme.inversePrimary
+          : Theme.of(context).colorScheme.onSurfaceVariant,
     );
 
     return SizeTransition(
       sizeFactor: _focusModeControlRowAnimation,
       child: ClipRect(
-        child: Container(
-          color: Colors.grey.shade50,
-          child: Column(
-            children: <Widget>[
-              const Center(
-                child: Text('Focus Mode'),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  TextButton(
-                    style: styleAuto,
-                    onPressed: controller != null
-                        ? () => onSetFocusModeButtonPressed(FocusMode.auto)
-                        : null,
-                    onLongPress: () {
-                      if (controller != null) {
-                        controller!.setFocusPoint(null);
-                      }
-                      showInSnackBar('Resetting focus point');
-                    },
-                    child: const Text('AUTO'),
-                  ),
-                  TextButton(
-                    style: styleLocked,
-                    onPressed: controller != null
-                        ? () => onSetFocusModeButtonPressed(FocusMode.locked)
-                        : null,
-                    child: const Text('LOCKED'),
-                  ),
-                ],
-              ),
-            ],
-          ),
+        child: Column(
+          children: <Widget>[
+            const Center(
+              child: Text('РЕЖИМ ФОКУСА'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                TextButton(
+                  style: styleAuto,
+                  onPressed: controller != null
+                      ? () => onSetFocusModeButtonPressed(FocusMode.auto)
+                      : null,
+                  onLongPress: () {
+                    if (controller != null) {
+                      controller!.setFocusPoint(null);
+                    }
+                    showInSnackBar('Сброс точки фокуса');
+                  },
+                  child: const Text('АВТО'),
+                ),
+                TextButton(
+                  style: styleLocked,
+                  onPressed: controller != null
+                      ? () => onSetFocusModeButtonPressed(FocusMode.locked)
+                      : null,
+                  child: const Text('ЗАБЛОКИРОВАНО'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -488,26 +481,28 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     } on CameraException catch (e) {
       switch (e.code) {
         case 'CameraAccessDenied':
-          showInSnackBar('You have denied camera access.');
+          showInSnackBar('Вы ограничили доступ к камеры.');
           break;
         case 'CameraAccessDeniedWithoutPrompt':
           // iOS only
-          showInSnackBar('Please go to Settings app to enable camera access.');
+          showInSnackBar(
+              'Пожалуйста, перейдите в приложение «Настройки», чтобы включить доступ к камере.');
           break;
         case 'CameraAccessRestricted':
           // iOS only
-          showInSnackBar('Camera access is restricted.');
+          showInSnackBar('Вы ограничили доступ к камере.');
           break;
         case 'AudioAccessDenied':
-          showInSnackBar('You have denied audio access.');
+          showInSnackBar('Вы отклонили доступ аудио.');
           break;
         case 'AudioAccessDeniedWithoutPrompt':
           // iOS only
-          showInSnackBar('Please go to Settings app to enable audio access.');
+          showInSnackBar(
+              'Пожалуйста, перейдите в приложение «Настройки», чтобы включить доступ к аудио.');
           break;
         case 'AudioAccessRestricted':
           // iOS only
-          showInSnackBar('Audio access is restricted.');
+          showInSnackBar('Доступ к аудио ограничен.');
           break;
         default:
           _showCameraException(e);
@@ -555,7 +550,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       if (mounted) {
         setState(() {});
       }
-      showInSnackBar('Flash mode set to ${mode.toString().split('.').last}');
+      showInSnackBar(
+          'Режим вспышки установлен в ${mode.toString().split('.').last}');
     });
   }
 
@@ -564,7 +560,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       if (mounted) {
         setState(() {});
       }
-      showInSnackBar('Exposure mode set to ${mode.toString().split('.').last}');
+      showInSnackBar(
+          'Режим экспозиции установлен в ${mode.toString().split('.').last}');
     });
   }
 
@@ -573,7 +570,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
       if (mounted) {
         setState(() {});
       }
-      showInSnackBar('Focus mode set to ${mode.toString().split('.').last}');
+      showInSnackBar(
+          'Режим фокуса установлен в ${mode.toString().split('.').last}');
     });
   }
 
@@ -634,7 +632,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
   void _showCameraException(CameraException e) {
     _logError(e.code, e.description);
-    showInSnackBar('Error: ${e.code}\n${e.description}');
+    showInSnackBar('Ошибка: ${e.code}\n${e.description}');
   }
 }
 
