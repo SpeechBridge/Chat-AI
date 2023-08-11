@@ -69,7 +69,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   @override
   void initState() {
     super.initState();
-    
+
     WidgetsBinding.instance.addObserver(this);
     onNewCameraSelected(cameras[0]);
     _flashModeControlRowAnimationController = AnimationController(
@@ -129,14 +129,6 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     return Scaffold(
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: 36.0.h),
-        child: FloatingActionButton(
-          onPressed: () {
-            currentCameraIndex = (currentCameraIndex + 1) % cameras.length;
-            CameraDescription description = cameras[currentCameraIndex];
-            onNewCameraSelected(description);
-          },
-          child: const Icon(Icons.cameraswitch),
-        ),
       ),
       body: SafeArea(
         child: Column(
@@ -213,7 +205,17 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
                       icon: const Icon(Icons.filter_center_focus),
                       onPressed:
                           controller != null ? onFocusModeButtonPressed : null,
-                    )
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.cameraswitch),
+                      onPressed: () {
+                        currentCameraIndex =
+                            (currentCameraIndex + 1) % cameras.length;
+                        CameraDescription description =
+                            cameras[currentCameraIndex];
+                        onNewCameraSelected(description);
+                      },
+                    ),
                   ]
                 : <Widget>[],
           ],

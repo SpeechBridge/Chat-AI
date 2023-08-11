@@ -156,7 +156,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 26.h, horizontal: 30.h),
                 child: Text(
-                  isLastPage ? "Регистрация и вход" : "Заценим!",
+                  isLastPage ? "Начнём!" : "Заценим!",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 22.sp,
