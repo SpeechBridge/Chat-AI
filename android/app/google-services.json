@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "859031858528",
+    "project_id": "chat-ai-speech-bridge",
+    "storage_bucket": "chat-ai-speech-bridge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859031858528:android:d73496efcfb1d954c90205",
+        "android_client_info": {
+          "package_name": "com.example.ai_chat_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859031858528-c8b696cj7a7k029sgaetilmsvfnmdf6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKhlep7mSA1953kbGksU2MRs0-ECWcsMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859031858528-c8b696cj7a7k029sgaetilmsvfnmdf6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

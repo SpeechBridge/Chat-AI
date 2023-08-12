@@ -66,18 +66,30 @@ class SearchSignViewState extends State<SearchSignView> {
                               itemBuilder: (context, index) {
                                 final signData =
                                     state.data?.signDataList[index];
-                                return Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 20.h, right: 20.h),
+                                return Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20.h, vertical: 10.h),
+                                  decoration: BoxDecoration(
+                                    //оставить или убрать
+                                    // color: Theme.of(context)
+                                    //     .colorScheme
+                                    //     .surfaceVariant,
+
+                                    // color: Colors
+                                    //     .white, // Выберите цвет фона, который вам нужен
+                                    borderRadius: BorderRadius.circular(
+                                        15.h), // Закругленные углы
+                                  ),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(signData?.category ?? '',
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w500,
-                                          )),
+                                      Text(
+                                        signData?.category ?? '',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                      ),
                                       SizedBox(height: 4.h),
                                       Wrap(
                                         spacing:
