@@ -25,8 +25,6 @@ class SinglePage extends StatelessWidget {
           style: TextStyle(
             fontSize: 32.sp,
             fontWeight: FontWeight.w800,
-            // height: 0.8,
-            // letterSpacing: 0.8,
           ),
           textAlign: TextAlign.center,
         ),
@@ -38,8 +36,6 @@ class SinglePage extends StatelessWidget {
           style: TextStyle(
             fontSize: 21.sp,
             fontWeight: FontWeight.w400,
-            // height: 1.5,
-            // letterSpacing: 0.8,
           ),
           textAlign: TextAlign.center,
         ),

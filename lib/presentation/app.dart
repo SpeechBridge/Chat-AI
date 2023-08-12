@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ChangeThemeState>(
         builder: (context, themeState) {
           return ScreenUtilInit(
-            //Set the fit size (Find your UI design, look at the dimensions of the device screen and fill it in,unit in dp)
             designSize: const Size(360, 800),
             minTextAdapt: true,
             splitScreenMode: true,
@@ -40,20 +39,9 @@ class MyApp extends StatelessWidget {
                   ColorScheme darkColorScheme;
 
                   if (lightDynamic != null && darkDynamic != null) {
-                    // On Android S+ devices, use the provided dynamic color scheme.
-                    // (Recommended) Harmonize the dynamic color scheme' built-in semantic colors.
                     lightColorScheme = lightDynamic.harmonized();
-                    // (Optional) Customize the scheme as desired. For example, one might
-                    // want to use a brand color to override the dynamic [ColorScheme.secondary].
-                    // lightColorScheme = lightColorScheme.copyWith(
-                    //     secondary: const Color.fromARGB(255, 82, 99, 79));
-                    // Repeat for the dark color scheme.
                     darkColorScheme = darkDynamic.harmonized();
-                    // darkColorScheme = darkColorScheme.copyWith(
-                    //   secondary: const Color.fromARGB(255, 186, 204, 179),
-                    // );
                   } else {
-                    // Otherwise, use fallback schemes.
                     lightColorScheme = ColorScheme.fromSeed(
                       seedColor: const Color.fromARGB(255, 82, 99, 79),
                     );
@@ -64,8 +52,7 @@ class MyApp extends StatelessWidget {
                   }
 
                   return MaterialApp(
-                    //TODO: change title
-                    title: 'chat ai',
+                    title: 'AI Жесты',
                     theme: themeState.type == ThemeType.custom
                         ? ThemeData(
                             colorScheme: lightColorScheme,

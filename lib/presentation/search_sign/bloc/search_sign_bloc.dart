@@ -10,7 +10,6 @@ part 'search_sign_bloc.freezed.dart';
 class SearchSignBloc extends Bloc<SearchSignEvent, SearchSignState> {
   SearchSignBloc() : super(const SearchSignState()) {
     on<_Search>(_onSearch);
-    // on<_Refreshed>(_onRefreshed);
   }
 
   final SignService _signService = SignService();
@@ -35,17 +34,4 @@ class SearchSignBloc extends Bloc<SearchSignEvent, SearchSignState> {
       emit(state.copyWith(status: SearchSignStatus.failure));
     }
   }
-
-  // Future<void> _onRefreshed(
-  //     _Refreshed event, Emitter<SearchSignState> emit) async {
-  //   if (!state.status.isSuccess || state.data == null) return;
-
-  //   emit(state.copyWith(status: SearchSignStatus.loading));
-  //   try {
-  //     final data = await _signService.searchSigns(state.word!);
-  //     emit(state.copyWith(status: SearchSignStatus.success, data: data));
-  //   } catch (_) {
-  //     emit(state.copyWith(status: SearchSignStatus.failure));
-  //   }
-  // }
 }

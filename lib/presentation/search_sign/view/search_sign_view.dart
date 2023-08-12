@@ -53,14 +53,11 @@ class SearchSignViewState extends State<SearchSignView> {
                       },
                     ),
                   ),
-                  //над оптимизаией еще работать и работать
                   if (state.status == SearchSignStatus.success)
-                    // ignore: prefer_is_empty
-                    state.data?.signDataList.length == 0
+                    state.data!.signDataList.isEmpty
                         ? const SignNotFoundWidget()
                         : Expanded(
                             child: ListView.builder(
-                              //кэш для оптимизации
                               cacheExtent: 15000.0,
                               itemCount: state.data?.signDataList.length ?? 0,
                               itemBuilder: (context, index) {
@@ -113,7 +110,6 @@ class SearchSignViewState extends State<SearchSignView> {
                               },
                             ),
                           ),
-                  // Вы можете добавить дополнительные виджеты для других состояний
                 ],
               );
             },

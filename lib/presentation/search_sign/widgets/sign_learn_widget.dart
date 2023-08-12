@@ -45,9 +45,6 @@ class SignDetailPageState extends State<SignDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // systemOverlayStyle: const SystemUiOverlayStyle(
-        //   statusBarColor: Colors.transparent,
-        // ),
         centerTitle: true,
         title: Text(
           widget.text,

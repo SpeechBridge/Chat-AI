@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('HomePage'),
-          //button CameraApp()
           ElevatedButton(
             onPressed: () {
               Navigator.push(
