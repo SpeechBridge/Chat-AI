@@ -73,11 +73,12 @@ class SearchSignViewState extends State<SearchSignView> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(signData?.category ?? '',
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w500,
-                                          )),
+                                      Text(
+                                        signData?.category ?? '',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineSmall,
+                                      ),
                                       SizedBox(height: 4.h),
                                       Wrap(
                                         spacing:
