@@ -18,13 +18,14 @@ class _HomePageState extends State<HomePage> {
           const Text('HomePage'),
           //button CameraApp()
           ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CameraApp()),
-                );
-              },
-              child: const Text('Камера')),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CameraApp()),
+              );
+            },
+            child: const Text('Камера'),
+          ),
         ],
       ),
     );

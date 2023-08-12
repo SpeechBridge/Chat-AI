@@ -1,9 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:ai_chat_flutter/main.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
@@ -133,7 +134,7 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
           radius: 45.h / 2,
           backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
           child: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.chevron_left),
             onPressed: () {
               Navigator.pop(context);
             },
