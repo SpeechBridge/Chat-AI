@@ -1,4 +1,4 @@
-import 'package:ai_chat_flutter/presentation/camera_page/view/camera_view.dart';
+import 'package:ai_chat_flutter/presentation/camera_page/view/simple_camera_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CameraApp()),
+                MaterialPageRoute(builder: (context) => const MyHomePage()),
               );
             },
             child: const Text('Камера'),
