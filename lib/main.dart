@@ -15,6 +15,7 @@ void main() async {
   cameras = await availableCameras();
   channel = WebSocketChannel.connect(
     Uri.parse('wss://speech-back.onrender.com/ws'),
+    //Uri.parse('ws://127.0.0.22:10000/ws'),
   );
   //cameras = await availableCameras();
   Bloc.observer = AppBlocObserver();
