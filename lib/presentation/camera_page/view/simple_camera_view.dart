@@ -138,9 +138,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   maxLines: 4, // Ограничить количество строк до 4
                   overflow: TextOverflow
                       .ellipsis, // Добавить многоточие, если текст слишком длинный
-                  serverMessage ?? '',
+                  serverMessage ?? 'null',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),
